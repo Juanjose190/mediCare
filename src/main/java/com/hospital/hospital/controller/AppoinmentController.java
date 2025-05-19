@@ -1,8 +1,8 @@
-package controller;
+package com.hospital.hospital.controller;
 
-import DTO.AppoinmentDTO;
-import ENUM.Status;
-import Interfaces.IAppoinment;
+import com.hospital.hospital.DTO.AppoinmentDTO;
+import com.hospital.hospital.ENUM.Status;
+import com.hospital.hospital.interfaces.IAppoinment;
 import java.time.LocalDate;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

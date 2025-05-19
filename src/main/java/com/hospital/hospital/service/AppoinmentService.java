@@ -1,8 +1,8 @@
-package service;
+package com.hospital.hospital.service;
 
-import DTO.AppoinmentDTO;
-import ENUM.Status;
-import Interfaces.IAppoinment;
+import com.hospital.hospital.DTO.AppoinmentDTO;
+import com.hospital.hospital.ENUM.Status;
+import com.hospital.hospital.interfaces.IAppoinment;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -10,14 +10,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import model.Appoinment;
-import model.Doctor;
-import model.Patient;
+import com.hospital.hospital.model.Appoinment;
+import com.hospital.hospital.model.Doctor;
+import com.hospital.hospital.model.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.AppoinmentRepository;
-import repository.DoctorRepository;
-import repository.PatientRepository;
+import com.hospital.hospital.repository.AppoinmentRepository;
+import com.hospital.hospital.repository.DoctorRepository;
+import com.hospital.hospital.repository.PatientRepository;
 
 @Service
 public class AppoinmentService implements IAppoinment {

@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Interfaces;
+package com.hospital.hospital.interfaces;
 
-import DTO.AppoinmentDTO;
+import com.hospital.hospital.DTO.AppoinmentDTO;
 import java.time.LocalDate;
 import java.util.List;
 

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DTO;
+package com.hospital.hospital.DTO;
 
 /**
  *
@@ -10,7 +10,7 @@ package DTO;
  */
 public class PatientDTO {
     
-    private int id;
+    private Long id;
     private String name;
     private int age; 
     private String email; 
@@ -24,7 +24,7 @@ public class PatientDTO {
 }
     
 
-    public PatientDTO(int id, String name, int age, String email, String adress, String phone, String identification) {
+    public PatientDTO(Long id, String name, int age, String email, String adress, String phone, String identification) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -37,11 +37,11 @@ public class PatientDTO {
     
     //get and set
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

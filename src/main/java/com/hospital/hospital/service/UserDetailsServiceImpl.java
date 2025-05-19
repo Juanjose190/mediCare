@@ -1,7 +1,7 @@
-package service;
+package com.hospital.hospital.service;
 
-import model.User;
-import repository.UserRepository;
+import com.hospital.hospital.model.User;
+import com.hospital.hospital.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.*;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

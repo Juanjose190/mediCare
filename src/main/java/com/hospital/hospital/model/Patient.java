@@ -1,8 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package model;
+package com.hospital.hospital.model;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -26,8 +22,7 @@ public class Patient {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    
+    private Long id;  
     
     private String name;
     private int age; 
@@ -40,9 +35,11 @@ public class Patient {
     private List<Appoinment> appoinments;
     
     
-    @OneToOne(mappedBy = "patient")
+    @OneToOne(mappedBy = "patient", cascade = CascadeType.ALL)  // Añadido cascade
     private MedicalHistory medicalHistory; 
     
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)  // Añadida relación con Notification
+    private List<Notification> notifications;
     
     
     public Patient(){
@@ -50,8 +47,8 @@ public class Patient {
     }; 
 
     
-    
-    public Patient(int id, String name, int age, String email, String adress, String phone, List<Appoinment> appoinments, MedicalHistory medicalHistory, String identification) {
+   
+    public Patient(Long id, String name, int age, String email, String adress, String phone, List<Appoinment> appoinments, MedicalHistory medicalHistory, String identification) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -67,11 +64,11 @@ public class Patient {
     
     //get and set
 
-    public int getId() {
+    public Long getId() {  
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {  
         this.id = id;
     }
 
@@ -139,7 +136,13 @@ public class Patient {
         this.identification = identification;
     }
     
-    
+    public List<Notification> getNotifications() {
+        return notifications;
+    }
+
+    public void setNotifications(List<Notification> notifications) {
+        this.notifications = notifications;
+    }
     
     
 }

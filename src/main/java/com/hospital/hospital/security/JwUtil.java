@@ -1,4 +1,4 @@
-package Security;
+package com.hospital.hospital.security;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;

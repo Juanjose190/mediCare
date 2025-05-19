@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package service;
+package com.hospital.hospital.service;
 
-import DTO.PatientDTO;
-import Interfaces.IPatient;
+import com.hospital.hospital.DTO.PatientDTO;
+import com.hospital.hospital.interfaces.IPatient;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-import model.Patient;
+import com.hospital.hospital.model.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.PatientRepository;
+import com.hospital.hospital.repository.PatientRepository;
 
 /**
  *
@@ -27,8 +27,8 @@ public class PatientService implements IPatient{
     @Override 
     public PatientDTO registrarPaciente(PatientDTO dto){
         
-        boolean exist = patientRepository.existsByCorreo(dto.getEmail()) ||
-                        patientRepository.existsByIdentification(dto.getIdentification());
+        boolean exist = patientRepository.existsByEmail(dto.getEmail()) ||
+                patientRepository.existsByIdentification(dto.getIdentification());
         
         if(exist){
             throw new RuntimeException("This patient already exists");

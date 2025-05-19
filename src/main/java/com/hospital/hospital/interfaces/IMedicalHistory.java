@@ -2,10 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Interfaces;
+package com.hospital.hospital.interfaces;
 
-import DTO.MedicalHistoryDTO;
+import com.hospital.hospital.DTO.MedicalHistoryDTO;
 import java.util.List;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -14,7 +15,6 @@ import java.util.List;
 public interface IMedicalHistory {
     
  
-    MedicalHistoryDTO crearHistoriaMedica(MedicalHistoryDTO medicalHistoryDTO);
 
     MedicalHistoryDTO obtenerHistoriaPorPaciente(Long patientId);
 
@@ -25,4 +25,6 @@ public interface IMedicalHistory {
     void eliminarHistoriaMedica(Long id);
 
     public MedicalHistoryDTO getMedicalHistoryByPatient(Long patientId);
+    
+    MedicalHistoryDTO crearHistoriaMedica(Long patientId, MultipartFile file);
 }

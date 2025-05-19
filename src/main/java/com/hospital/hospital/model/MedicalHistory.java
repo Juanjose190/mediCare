@@ -1,8 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package model;
+package com.hospital.hospital.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,11 +24,11 @@ public class MedicalHistory {
     
     
     @OneToOne
-    @JoinColumn(name = "patiend_id")
+    @JoinColumn(name = "patient_id")  
     private Patient patient; 
     
     
-    //Constructor vacio
+
     public MedicalHistory(){
     };
     

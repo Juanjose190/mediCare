@@ -1,4 +1,4 @@
-package Security;
+package com.hospital.hospital.security;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -10,10 +10,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-import Security.JwUtil;
+import com.hospital.hospital.security.JwUtil;
 import java.io.IOException;
 import org.springframework.util.StringUtils;
-import service.UserDetailsServiceImpl;
+import com.hospital.hospital.service.UserDetailsServiceImpl;
 
 @Component
 public class JwtAuthFilter extends OncePerRequestFilter {
@@ -23,45 +23,51 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
 
-    
     @Override
-protected void doFilterInternal(HttpServletRequest request,
-                               HttpServletResponse response,
-                               FilterChain filterChain) throws ServletException, IOException {
-    String path = request.getServletPath();
-    
-    // Permite pasar sin autenticación las rutas de autenticación
-    if (path.startsWith("/auth/register")) {
-        filterChain.doFilter(request, response);
-        return;
-    }
-
-    try {
-        String jwt = getJwtFromRequest(request);
-
-        if (!StringUtils.hasText(jwt)) {
-            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Token JWT no proporcionado");
+    protected void doFilterInternal(HttpServletRequest request,
+                                   HttpServletResponse response,
+                                   FilterChain filterChain) throws ServletException, IOException {
+        String path = request.getServletPath();
+        
+      
+        System.out.println("JwtAuthFilter - Path: " + path);
+        System.out.println("JwtAuthFilter - Method: " + request.getMethod());
+        
+        
+        if (path.startsWith("/auth/")) {
+            System.out.println("JwtAuthFilter - Permitiendo acceso a ruta de autenticación: " + path);
+            filterChain.doFilter(request, response);
             return;
         }
 
-        if (jwUtil.validateToken(jwt)) {
-            String username = jwUtil.extractUsername(jwt);
-            UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+        try {
+            String jwt = getJwtFromRequest(request);
             
-            UsernamePasswordAuthenticationToken authentication = 
-                new UsernamePasswordAuthenticationToken(
-                    userDetails, null, userDetails.getAuthorities());
-            
-            SecurityContextHolder.getContext().setAuthentication(authentication);
-        }
-    } catch (Exception ex) {
-        logger.error("Error al procesar el JWT: " + ex.getMessage());
-        response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Token inválido");
-        return;
-    }
+           
+            if (jwt != null) {
+                System.out.println("JwtAuthFilter - Token recibido y procesando");
+            } else {
+                System.out.println("JwtAuthFilter - No se recibió token JWT");
+            }
 
-    filterChain.doFilter(request, response);
-}
+            if (StringUtils.hasText(jwt) && jwUtil.validateToken(jwt)) {
+                String username = jwUtil.extractUsername(jwt);
+                UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+                
+                UsernamePasswordAuthenticationToken authentication = 
+                    new UsernamePasswordAuthenticationToken(
+                        userDetails, null, userDetails.getAuthorities());
+                
+                SecurityContextHolder.getContext().setAuthentication(authentication);
+                System.out.println("JwtAuthFilter - Usuario autenticado: " + username);
+            }
+        } catch (Exception ex) {
+            System.out.println("JwtAuthFilter - Error al procesar JWT: " + ex.getMessage());
+           
+        }
+
+        filterChain.doFilter(request, response);
+    }
     
     private String getJwtFromRequest(HttpServletRequest request) {
         String bearerToken = request.getHeader("Authorization");

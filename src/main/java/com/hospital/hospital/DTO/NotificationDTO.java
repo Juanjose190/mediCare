@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DTO;
-import ENUM.NotificationType;
-import model.Notification;
+package com.hospital.hospital.DTO;
+import com.hospital.hospital.ENUM.NotificationType;
+import com.hospital.hospital.model.Notification;
 /**
  *
  * @author JUAN JOSE

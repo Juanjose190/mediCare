@@ -1,6 +1,6 @@
-package model;
+package com.hospital.hospital.model;
 
-import ENUM.Role;
+import com.hospital.hospital.ENUM.Role;
 import jakarta.persistence.*;
 
 @Entity
@@ -17,6 +17,10 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private Role role;
+    
+    public User() {
+}
+
 
     public Long getId() { return id; }
 

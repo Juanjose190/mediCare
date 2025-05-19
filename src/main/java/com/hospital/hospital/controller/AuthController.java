@@ -1,10 +1,10 @@
-package controller;
+package com.hospital.hospital.controller;
 
-import DTO.AuthRequest;
-import ENUM.Role;
-import model.User;
-import repository.UserRepository;
-import Security.JwUtil;
+import com.hospital.hospital.DTO.AuthRequest;
+import com.hospital.hospital.ENUM.Role;
+import com.hospital.hospital.model.User;
+import com.hospital.hospital.repository.UserRepository;
+import com.hospital.hospital.security.JwUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +14,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-import service.UserDetailsServiceImpl;
+import com.hospital.hospital.service.UserDetailsServiceImpl;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -54,7 +54,7 @@ public class AuthController {
             User savedUser = userRepository.save(user);
             System.out.println("User registered successfully with ID: " + savedUser.getId());
 
-            // Generar token directamente después del registro exitoso
+       
             String token = jwUtil.generateToken(user.getUsername());
             
             Map<String, Object> response = new HashMap<>();
@@ -86,7 +86,7 @@ public class AuthController {
             String token = jwUtil.generateToken(request.getUsername());
             System.out.println("Login successful, token generated");
             
-            // Crear un objeto de respuesta con el token
+           
             Map<String, Object> response = new HashMap<>();
             response.put("token", token);
             response.put("username", request.getUsername());

@@ -1,17 +1,17 @@
-package repository;
+package com.hospital.hospital.repository;
 
-import ENUM.Status;
+import com.hospital.hospital.ENUM.Status;
 import java.time.LocalDateTime;
 import java.util.List;
-import model.Appoinment;
+import com.hospital.hospital.model.Appoinment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-@EnableJpaRepositories
-@Repository
+
+
 public interface AppoinmentRepository extends JpaRepository<Appoinment, Long> {
     
     @Query("SELECT a FROM Appoinment a WHERE a.patient.id = :patientId")

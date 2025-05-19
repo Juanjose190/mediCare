@@ -2,11 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Interfaces;
+package com.hospital.hospital.interfaces;
 
-import DTO.DoctorDTO;
+import com.hospital.hospital.DTO.DoctorDTO;
 import java.util.List;
-import model.Doctor;
+import com.hospital.hospital.model.Doctor;
 
 /**
  *
