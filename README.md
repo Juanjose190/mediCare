@@ -7,7 +7,7 @@ Un sistema completo para clínicas y centros médicos que permite registrar paci
 - 📋 Registro y gestión de pacientes
 - 🧾 Historial médico completo por paciente
 - 🗓️ Programación y gestión de citas médicas
-- 🔔 Notificaciones automáticas (correo y/o sistema)
+- 🔔 Notificaciones 
 - ✍️ Firma digital de documentos clínicos
 - ☁️ Subida y almacenamiento de historias clínicas en **AWS S3**
 - 🔐 Seguridad basada en roles con **Spring Security**
